@@ -67,3 +67,25 @@ button {
     padding-left: 12px;
 }
 
+.removePadding {
+    margin: 0;
+    padding: 0;
+}
+
+.removePadding2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.orange{
+    COLOR: #be6a46;
+}
+
+.blue {
+    color: #7cdcfe;
+
+}
+
+#inline {
+    display: flex;
+}
