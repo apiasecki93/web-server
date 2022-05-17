@@ -11,10 +11,19 @@ const forecast = (latitude, longitude, callback) => {
             callback('Unable to find location. Try another search.', undefined)
         }
         else {
+            // console.log(body.current)
+            let bd = body.current
             callback(undefined, {
-                temperature: body.current.temperature,
-                feelslike: body.current.feelslike,
-                weather_descriptions: body.current.weather_descriptions[0]
+                temperature: bd.temperature,
+                feelslike: bd.feelslike,
+                weather_descriptions: bd.weather_descriptions[0],
+                observationTime: bd.observation_time,
+                windSpeed: bd.wind_speed,
+                pressure: bd.pressure,
+                humidity: bd.humidity,
+                cloudCover: bd.cloudcover,
+                uvIndex: bd.uv_index,
+                visibility: bd.visibility
             })
         }
     })

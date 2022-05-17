@@ -21,6 +21,7 @@ console.log('Client side javascript file is loaded into index.js when requested 
 const weatherForm = document.querySelector('form')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
+const iframeMap = document.querySelector('#map')
 
 
 
@@ -39,10 +40,39 @@ weatherForm.addEventListener('submit', (e) => {
             else {
                 // console.log(data.location)
                 // console.log(data.forecast)
-                const {temperature, feelslike, weather_descriptions} = data.forecast
+                const {temperature, feelslike, weather_descriptions, observationTime, windSpeed, pressure,humidity, cloudCover, uvIndex,visibility} = data.forecast
                 messageOne.textContent = data.location
-                messageTwo.textContent = `It is a  ${weather_descriptions} weather, and it is currently ${temperature} ℃, and it feels like ${feelslike} ℃ :).`
-            }
+                const lat = data.latitude;
+                const lon = data.longitude;
+               
+                const address = data.location.charAt(0).toUpperCase() + data.address.slice(1)
+                let quickSentence;
+                if (temperature < feelslike) {
+                    quickSentence = `but it feels as the temperature is higher:  ${feelslike} ℃`
+                } else if (temperature > feelslike) {
+                    quickSentence = `but it feels as the temperature is lower: ${feelslike} ℃`
+                } else {
+                    quickSentence = "and we can feel like same temperature"
+                }
+                // add <br> after address
+
+                messageTwo.textContent = `It is ${observationTime} in ${address}
+                and is ${weather_descriptions} weather,  current temperature is ${temperature} ℃, ${quickSentence}   ,
+                the wind speed is: ${windSpeed} km/h, pressure: ${pressure}Pa, humidity: ${humidity}%, cloud-cover: ${cloudCover}%, uv-index: ${uvIndex}UV, visibility: ${visibility}%.`
+                function initMap(lat,lon) {
+
+                    var macc = {lat: lat, lng: lon};
+            
+                    var map = new google.maps.Map(
+            
+                        document.getElementById('map'), {zoom: 15, center: macc});
+            
+                    var marker = new google.maps.Marker({position: macc, map: map});
+  
+                  }
+                initMap(lat,lon)
+            }      
+            //change the iframe map to the map of the search loca
         })
     })
 }, false)

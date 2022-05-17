@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
+const dotenv = require('dotenv');
+dotenv.config()
 //console.log(__dirname) // will print: D:\JavaScript\node\web-server\src
 //console.log(__filename) // will print: D:\JavaScript\node\web-server\src\app.js
 //console.log(path.join(__dirname, '../public')) // will print: D:\JavaScript\node\web-server\public
 
 const geocode = require('../src/utils/geocode');
 const forecast = require('../src/utils/forecast');
+const map = require('../src/utils/maps');
 
 
 
@@ -87,12 +90,22 @@ app.get('/weather', (req, res) => {
                 if (error) {
                     return res.send({error})
                 }
+                // map(latitude, longitude, (error) => {
+                //     if (error) {
+                //         return res.send({error})
+                //     } else {
+                //         console.log("tu działa?")
+                //     }
+                // })
                 res.send({
                     forecast: forecastData,
                     location: location,
-                    address: req.query.address
+                    address: req.query.address,
+                    latitude: latitude,
+                    longitude: longitude,
                 });
             })
+            
         })
     }
 })

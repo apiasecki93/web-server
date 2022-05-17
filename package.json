@@ -4,15 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js -e js,hbs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.13",
+    "@googlemaps/js-api-loader": "^1.14.2",
+    "dotenv": "^16.0.1",
     "express": "^4.16.4",
+    "google-maps": "^4.3.3",
     "hbs": "^4.0.1",
     "heroku-cli": "^7.0.9",
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.2.0"
   }
 }

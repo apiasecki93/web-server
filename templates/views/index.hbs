@@ -11,7 +11,9 @@
         <title>Weather</title>
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
         <link rel="icon" href="/img/weather.jpg">
-        
+        <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps.css'>
+        <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps-web.min.js'></script>
+        <script type='text/javascript' src='../assets/js/mobile-or-tablet.js'></script>
     </head>
     <body>
         <div class="main-content">
@@ -25,7 +27,20 @@
 
             <p id="message-1"></p>
             <p id="message-2"></p>
+
         </div>
+        <div id='map' class='map'></div>
+        <!-- 
+            The `defer` attribute causes the callback to execute after the full HTML
+            document has been parsed. For non-blocking uses, avoiding race conditions,
+            and consistent behavior across browsers, consider loading using Promises
+            with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+        -->
+        <script 
+
+            src="https://maps.googleapis.com/maps/api/js?key="+apiKey+"&callback">
+        </script>
+        {{!-- <script src="./js/apiGoogle.js"></script> --}}
         {{>footer}}
         <script src="./js/app.js"></script>
     </body>

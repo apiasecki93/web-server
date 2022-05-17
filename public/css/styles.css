@@ -4,10 +4,16 @@ body {
     max-width: 650px;
     margin: 0 auto;
     padding: 0 16px;
-
+    
     display:flex;
     flex-direction: column;
     min-height: 100vh;
+    /* load image background from public img with max size*/
+    background-image: url("../img/weatherBackground.webp");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: 100% 100%;
+
 }
 
 footer {
@@ -25,17 +31,26 @@ header {
 h1 {
     font-size: 64px;
     margin-bottom: 16px;
+    color: #e6e3e3;
 }
 
 header a {
-    color: #888888;
+    color: #e6e3e3;
     margin-top: 16px;
     text-decoration: none;
     padding: 1px;
 }
 
+
+h2, h3, h4, p {
+    color: #e6e3e3;
+
+}
+
 .portrait {
-    width: 250px
+    width: 250px;
+    /* transparet */
+   
 }
 
 .main-content {
@@ -88,4 +103,59 @@ button {
 
 #inline {
     display: flex;
+}
+
+#map {
+    position: relative;
+    /* move 100px up */
+    top: -60px;
+    right: -120px;
+    height: 400px;
+  /* The height is 400 pixels */
+  width: 400px;
+  /* round map */
+    border-radius: 50%;
+}
+
+/* make img transparent */
+#map img {
+    opacity: 1;
+}
+
+
+/* if small scren make map also small */
+@media screen and (max-width: 600px) {
+    #map {
+        height: 200px;
+        width: 200px;
+        top: 2px;
+    }
+}
+
+@media screen and (max-height: 900px) {
+    #map {
+        height: 300px;
+        width: 300px;
+        top: -80px;
+        right: -150px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #map {
+        height: 300px;
+        width: 300px;
+        top: -100px;
+        right: -100px;
+    }
+}
+
+@media screen and (max-height: 856px) {
+    #map {
+        padding-top: -30px;
+        height: 200px;
+        width: 200px;
+        top: -100px;
+        right: -100px;
+    }
 }
